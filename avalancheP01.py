@@ -1,12 +1,13 @@
 import arcpy
 import time
+import sys
 
 start = time.time()
+version = sys.argv[1]
+path = "C:/GIS-Projects/AvalancheNVME/"
 
-version = "06"
-
-
-polygonForClipping = "C:/GIS-Projects/AvalancheNVME/Avalanche.gdb/AreaPolygon"
+print("Clipping Raster...")
+polygonForClipping = path + "Avalanche.gdb/AreaPolygon"
 baseDEM = "C:/GIS-Projects/AvalancheNVME/DEM_Tirol_5m.tif"
 clippedDEM = "C:/GIS-Projects/AvalancheNVME/ClippedDEM" + version + ".tif"
 
@@ -16,7 +17,7 @@ extentOfPolygon = str(extentFile.extent.XMin) + " " + str(extentFile.extent.YMin
 arcpy.Clip_management(baseDEM, extentOfPolygon, clippedDEM, polygonForClipping, "0", "ClippingGeometry", "NO_MAINTAIN_EXTENT")
 print("Clip Raster successful\n")
 
-
+print("Removing Pits...")
 # Pit Remove
 arcpy.ImportToolbox(r'D:\TauDEM\TauDEM5Arc\TauDEM Tools.tbx','')
 arcpy.PitRemove(clippedDEM, None, None, 8, r"C:\GIS-Projects\AvalancheNVME\ClippedDEM" + version + "fel.tif")
@@ -25,7 +26,7 @@ pitRemovedDEM = r"C:\GIS-Projects\AvalancheNVME\ClippedDEM" + version + "fel.tif
 arcpy.Delete_management(clippedDEM)
 print("Pit Remove successful\n")
 
-
+print("Calculating Flow Direction...")
 # Dinf Flow Direction
 arcpy.ImportToolbox(r'D:\TauDEM\TauDEM5Arc\TauDEM Tools.tbx','')
 arcpy.DinfFlowDir(pitRemovedDEM, 8, r"C:\GIS-Projects\AvalancheNVME\ClippedDEM" + version + "ang.tif", r"C:\GIS-Projects\AvalancheNVME\ClippedDEM" + version + "slp.tif")
@@ -33,9 +34,10 @@ arcpy.DinfFlowDir(pitRemovedDEM, 8, r"C:\GIS-Projects\AvalancheNVME\ClippedDEM" 
 flowDirDEM = r"C:\GIS-Projects\AvalancheNVME\ClippedDEM" + version + "ang.tif"
 print("Flow Direction successful\n")
 
-# DELETE .slp
+# Delete .slp
 arcpy.Delete_management(r"C:\GIS-Projects\AvalancheNVME\ClippedDEM" + version + "slp.tif")
 
+print("Converting Raster to Points...")
 # Raster to Point
 arcpy.conversion.RasterToPoint(pitRemovedDEM, r"C:\GIS-Projects\AvalancheNVME\Avalanche.gdb\Points" + version, "Value")
 
@@ -43,6 +45,7 @@ inFeatures = r"C:\GIS-Projects\AvalancheNVME\Avalanche.gdb\Points" + version
 print("Raster to Point successful\n")
 
 
+print("Creating new Field...")
 arcpy.env.workspace = "C:/GIS-Projects/AvalancheNVME/Avalanche.gdb"
 
 # Create the new value field
@@ -51,7 +54,10 @@ fieldAlias = "Value"
 fieldLength = 255
 
 arcpy.AddField_management(inFeatures, fieldName1, "TEXT", field_alias=fieldAlias, field_length=fieldLength)
+print("New Field created\n")
 
+print("Setting new point values to 0...")
+print("(Depending on the size of the area this might take a long time)")
 # Set all new field values to 0
 fc = inFeatures
 
