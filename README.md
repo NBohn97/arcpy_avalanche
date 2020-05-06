@@ -7,8 +7,8 @@ Requirements:\
 
 
 avalancheP01.py:\
-    Input:  - Polygon of area to be analyzed.\
-    Output: - DEM-Raster with pits removed\
+###Input:  - Polygon of area to be analyzed.\
+###Output: - DEM-Raster with pits removed\
             - D-Infinity Flow Directions Raster\
             - Point feature-class filled with value 0
           
