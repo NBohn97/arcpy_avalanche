@@ -10,13 +10,13 @@ avalancheP01.py:\
     Input:  - Polygon of area to be analyzed.\
     Output: - DEM-Raster with pits removed\
             - D-Infinity Flow Directions Raster\
-            - Point feature-class filled with value 0\
+            - Point feature-class filled with value 0
           
-avalancheP02.py:
-    Input:  - DEM-Raster with pits removed
-            - D-Infinity Flow Directions Raster
-            - Point feature-class filled with value 0 (Value 1 in areas where avalanches are expected)
-    Output: - Avalanche runout zone affected area Raster (slope degree)
+avalancheP02.py:\
+    Input:  - DEM-Raster with pits removed\
+            - D-Infinity Flow Directions Raster\
+            - Point feature-class filled with value 0 (Value 1 in areas where avalanches are expected)\
+    Output: - Avalanche runout zone affected area Raster (slope degree)\
             - Avalanche path-distance raster
   
   
