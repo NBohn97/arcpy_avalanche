@@ -18,4 +18,5 @@ avalancheP02.py:
             - Point feature-class filled with value 0 (Value 1 in areas where avalanches are expected)
     Output: - Avalanche runout zone affected area Raster (slope degree)
             - Avalanche path-distance raster
-           
+  
+  
