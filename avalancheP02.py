@@ -4,6 +4,7 @@ import sys
 
 start = time.time()
 version = sys.argv[1]
+arcpy.env.overwriteOutput = True
 
 print("Preparing Workspace...")
 arcpy.env.workspace = "C:/GIS-Projects/AvalancheNVME/Avalanche.gdb"
