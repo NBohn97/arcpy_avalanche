@@ -1,9 +1,9 @@
 # arcpy_avalanche
 
-ArcPy script to prepare data for the 'TauDEM D-Infinity Avalanche Runout' tool.
-Requirements:
-            - ArcGIS Pro ArcPy environment
-            - TauDEM Toolbox
+ArcPy script to prepare data for the 'TauDEM D-Infinity Avalanche Runout' tool.\
+Requirements:\
+            - ArcGIS Pro ArcPy environment\
+            - TauDEM Toolbox\
 
 
 avalancheP01.py:
