@@ -1,4 +1,4 @@
-# arcpy_Lawinen
+# arcpy_avalanche
 
 ArcPy script to prepare data for the 'TauDEM D-Infinity Avalanche Runout' tool.
 Requirements:
