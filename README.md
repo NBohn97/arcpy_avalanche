@@ -3,14 +3,14 @@
 ArcPy script to prepare data for the 'TauDEM D-Infinity Avalanche Runout' tool.\
 Requirements:\
             - ArcGIS Pro ArcPy environment\
-            - TauDEM Toolbox\
+            - TauDEM Toolbox
 
 
-avalancheP01.py:
-    Input:  - Polygon of area to be analyzed.
-    Output: - DEM-Raster with pits removed
-            - D-Infinity Flow Directions Raster
-            - Point feature-class filled with value 0
+avalancheP01.py:\
+    Input:  - Polygon of area to be analyzed.\
+    Output: - DEM-Raster with pits removed\
+            - D-Infinity Flow Directions Raster\
+            - Point feature-class filled with value 0\
           
 avalancheP02.py:
     Input:  - DEM-Raster with pits removed
